@@ -1,0 +1,83 @@
+<html>
+	<head>
+<style>
+	body{
+		background-image: url('feedback.png');
+	
+	}
+	#countrysel{
+		width: 150px;
+		height: auto;
+	}
+	#statesel{
+		width: 150px;
+		height: auto;
+	}
+	#districtsel{
+		width: 150px;
+		height: auto;
+	}
+	#dropForm{
+		color:coral;
+	}
+	h1 {
+		color:rgb(178, 75, 230);
+		text-decoration: underline;
+		text-align: center;
+	}
+</style>
+	</head>
+<body>
+	<h1>DROP-DOWN LIST</h1>
+	<form name="dropform" id="dropForm">
+	Country: <select id="countrySel" >
+	<option value="" >Select Country</option>
+	</select>
+	 State: <select  id="stateSel" >
+	<option value="" >select Country first</option>
+	</select>
+	District: <select  id="districtSel" >
+	<option value="" >select State first</option>
+	</select>
+	</form>
+</body>
+<script>
+var data = {
+"India": { "Telengana": ["Hyderabad", "Secunderabad", "Warangal", "Khammam", "Nalgonda"],
+            "Andhra Pradesh": ["Vijayawada", "Vizag", "Guntur", "Tenali", "Nellore"],
+           "TamilNadu": ["Chennai", "Erode", "Coimbatore", "Selam", "Kanchipuram"]
+}
+}
+
+
+window.onload = function () {
+var countryselect= document.getElementById("countrySel");
+var stateselect = document.getElementById("stateSel");
+var districtselect	 = document.getElementById("districtSel");
+for (var country in data) {
+countryselect.options[countryselect.options.length] = new Option(country);
+}
+countryselect.onchange = function () {
+	stateselect.length = 1; 
+districtselect.length = 1; 
+if (this.selectedIndex < 1) return; 
+for (var state in data[this.value]) {
+ stateselect.options[stateselect.options.length] = new Option(state);
+}
+}
+countryselect.onchange(); 
+stateselect.onchange = function () {
+	districtselect.length = 1; 
+	 if (this.selectedIndex < 1)  
+	 return;
+ var district = data[countryselect.value][this.value];
+ 
+ for (var i = 0; i < district.length; i++) {
+districtselect.options[districtselect.options.length] = new Option(district[i]);
+
+}
+ }
+}
+ 
+</script>
+</html>

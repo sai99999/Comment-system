@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Like</title>
+
+    <style>
+        #like {
+            font-size: 20px;
+        }
+        .onlike {
+            /* background-color: lightseagreen; */
+            color: blue;
+        }
+        button{
+            border-radius: 5px;
+            height: 30px;
+            width:90px;
+            margin-left: 15px;
+        }
+        .image{
+            align-content: center;
+            width:fit-content;
+            height: fit-content;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="image">
+<img src="./Labimages.png"/>
+</div>
+    <button><i onclick="onLike()" class="fa fa-thumbs-up" id="like">Like</i></button>
+
+    <script>
+        function onLike() {
+            let like = document.getElementById("like");
+            like.classList.toggle("onlike")
+        }
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+

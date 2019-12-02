@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<h1 style="color:whitesmoke; text-align: center; text-decoration: underline; "> REVIEW-COMMENTING SYSTEM.
+	</h1>
+</head>
+<style>
+	body {
+		background-image: url('feedback.png');
+
+		/* background-color: cornflowerblue; */
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		height: 100%;
+		font: 82%italic;
+	}
+
+	.nav1 {
+		margin-left: auto;
+		width: fit-content;
+	}
+
+	.nav {
+		width: 100%;
+		align-content: flex-end;
+	}
+	.nav a {
+		float: left;
+		color: white;
+		text-align: center;
+		padding: 9px 22px;
+		text-decoration: none;
+		font-size: 18px;
+	}
+
+	.nav a:hover {
+		background-color: rgb(221, 221, 221);
+		color: black;
+	}
+
+	input {
+		font-size: 16px;
+		margin: 0px;
+		padding: 0;
+	}
+     .formArea {
+
+		margin-left: 20px;
+		/* margin-right: auto; */
+
+	}
+
+	.formArea input {
+		height: 48px;
+		outline: none;
+		border-right: 1px solid rgb(10, 10, 10);
+		border-left: 1px solid rgb(7, 7, 7);
+		border-top: 1px solid rgb(0, 0, 8);
+		border-radius: 5px 5px 0 0;
+		color: #555050;
+		padding-left: 36px;
+		width: 202px;
+	}
+
+	.formArea textarea {
+		border-right: 1px solid rgb(10, 10, 10);
+		border-left: 1px solid rgb(7, 7, 7);
+		border-top: 1px solid rgb(0, 0, 8);
+		border-bottom: 1px solid #000;
+		border-radius: 5px 5px 5px 5px;
+		color: #363636;
+		margin-bottom: 5px;
+		padding-left: 36px;
+		width: 446px;
+		font-family: 'Times New Roman', Times, serif;
+		font-size: 16px;
+		vertical-align: text-top;
+		margin-top: -17px;
+	}
+
+	.formArea button {
+		background: #ee7a7a;
+		border: 1px solid #b48181;
+		border-radius: 5px;
+		color: wheat;
+		height: 38px;
+		text-align: center;
+		text-transform: uppercase;
+		width: 120px;
+		/* margin-left: 366px; */
+	}
+
+	.form1 {
+		margin-left: 190px;
+	}
+
+	h3 {
+		color: wheat;
+		align-self: center;
+		margin-left: 500px;
+	}
+
+	div {
+		width: fit-content;
+	}
+
+	.msg {
+		margin-top: 14px;
+		display: inline-block;
+		margin-left: -123px;
+		color: lightgray;
+	}
+
+	.start {
+		color: rgb(69, 5, 129);
+		margin-left: 10px;
+	}
+
+	p {
+		color: black;
+		margin-left: 15px;
+	}
+
+	.card {
+		background: #a7b6be;
+		border-radius: 10px;
+		display: inline-block;
+		margin-top: 2%;
+		position: relative;
+		width: 400px;
+		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+	}
+	h4{
+		margin-left: 40px;
+	}
+  
+ </style>
+
+ <body>
+	<div class="nav1">
+		<div class="nav">
+			<a href="#home">Home</a>
+			<a href="#news">News</a>
+			<a href="#contact">Contact</a>
+			<a href="#about">About</a>
+		</div>
+	</div>
+
+	<h2 class="start">Let's Discuss!</h2>
+	<p><h4>Share your thoughts with the community.</h4></p>
+
+	<div class="form1">
+		<div class="formArea">
+			<form id="form">
+				<input type="text" name="UserName" id="name" required value="UserName"
+					onFocus="if (this.value === 'UserName')this.value = '' " placeholder="UserName">
+				<input type="text" id="email" name="Email" required value="Email"
+					onFocus="if (this.value === 'Email')this.value = ''" placeholder="Email">
+				<br />
+				<div>
+					<h1 class="msg">Comment:</h1>
+					<textarea name="Message" class="message" id="message" rows="5" required value="message"
+						onFocus="if (this.value === 'message')this.value = ''" placeholder="Type Your Message Here..."></textarea>
+
+				</div>
+
+				<button id="theButton" class="button" type="button" onclick="myFunction()">Submit Comment</button><br />
+
+
+				 <div class="demo" id="project">
+
+					
+				 </div>
+		</div>
+		</form>
+	     </div>
+	   </div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+	<script>
+		function myFunction() {
+			var UserName = document.getElementById("name");
+			var email = document.getElementById("email");
+			var message = document.getElementById("message");
+			var mainSec = document.getElementById("project")
+			var div = document.createElement("div");
+			div.setAttribute("class", "card");
+			mainSec.appendChild(div)
+
+
+			var p = document.createElement("p");
+			p.innerHTML = 'UserName:' + UserName.value
+			div.appendChild(p);
+
+			var p2 = document.createElement("p");
+			p2.innerHTML = 'Email-Id:' + email.value
+			div.appendChild(p2);
+
+			var p3 = document.createElement("p");
+			p3.innerHTML = 'Comment:' + message.value
+			div.appendChild(p3);
+
+			var p4 = document.createElement("p");
+			p4.innerHTML = moment().format('llll');
+			div.appendChild(p4); 
+
+			let button = document.createElement('a');
+			button.innerHTML = "reply";
+			button.setAttribute("onclick", "reply()");
+			div.appendChild(button);
+			
+
+			button.onclick = function reply() {
+				var data= document.createElement("div")
+				div.appendChild(data);
+
+				var input = document.createElement("input");
+				input.setAttribute("type", "text");
+				
+				input.setAttribute("class", "replySubmit");
+				data.appendChild(input);
+
+				var button1 = document.createElement("button")
+				button1.innerText = "Submit"
+				button1.setAttribute("onclick","onsubmit()")
+				data.appendChild(button1);
+
+				input.style.display= "block";
+				button1.style.dispaly = "block";
+
+              button1.onclick = function onsubmit() {
+				  event.preventDefault();
+
+				  button1.appendChild(input);
+
+				  input.style.display="none"
+				  button1.style.display="none"
+
+				  var data1 = document.createElement("div");
+				data1.innerHTML = 'replied:' + input.value
+				  div.appendChild(data1);
+			
+			  }
+			}
+		}
+    </script>
+ </body>
+
+</html>

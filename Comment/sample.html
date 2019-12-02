@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<style>
+    .lind {
+        font-size: 50px;
+        align-content: center;
+        margin-left: 350px;
+    }
+
+    button {
+        background-color: lightsteelblue;
+        color: black;
+        border-radius: 5px;
+        font-size: 25px;
+    }
+
+    .blind {
+        margin-left: 180px;
+        font-size: 30px;
+        margin-left: 400px;
+    }
+
+    .onlike {
+        color: lightgoldenrodyellow;
+    }
+</style>
+
+<body>
+    <div class="lind">
+        <img src="./Labimages.png"/>
+    </div>
+
+    <div class="blind">
+        <button><i class="fa fa-thumbs-up" id="increment" onclick="onLike()">Like</i></button>&nbsp;&nbsp;
+        <button> <i class="fa fa-thumbs-down" id="decrement" onclick="dislike()">Dislike</i></button>
+        <span> </span>
+    </div>
+
+    <script>
+        var x = 0;
+        var span = document.querySelector('span');
+        var increment = document.getElementById('increment');
+        var decrement = document.getElementById('decrement');
+
+        function onLike() {
+            increment.classList.toggle("onlike")
+            x = x + 1;
+            span.textContent = x;
+        }
+
+        function dislike() {
+            decrement.classList.toggle("onlike")
+            if (x >= 1) {
+                x = x - 1;
+                span.textContent = x;
+            }
+        }
+    </script>
+  </body>
+</html>
